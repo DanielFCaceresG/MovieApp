@@ -60,13 +60,20 @@ const MoviesList = ({navigation}) => {
   }, [page, searchWord]);
 
   return loading ? (
-    <Loading />
+    <Loading
+      loadingText={
+        (searchWord ? '"' + searchWord + '" movies' : 'all movies') +
+        ' page ' +
+        page
+      }
+    />
   ) : (
     <SafeAreaView>
       <View style={[styles.centerSearchAndPage, styles.centerItems]}>
         <TextInput
           style={styles.textInput}
           placeholder="All Movies"
+          returnKeyType={'done'}
           value={wordKeeper}
           onChangeText={text => {
             setWordKeeper(text);
@@ -111,8 +118,9 @@ const MoviesList = ({navigation}) => {
       </View>
       <View style={[styles.centerSearchAndPage, styles.centerItems]}>
         <Button
+          disabled={page === 1}
           onPress={() => {
-            page > 1 ? setPage(page - 1) : {disabled: true};
+            setPage(page - 1);
           }}
           title="<<<"
         />
@@ -122,8 +130,9 @@ const MoviesList = ({navigation}) => {
           {'      '}
         </Text>
         <Button
+          disabled={page === totalPages}
           onPress={() => {
-            page !== totalPages ? setPage(page + 1) : {disabled: true};
+            setPage(page + 1);
           }}
           title=">>>"
         />
@@ -143,12 +152,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textInput: {
-    backgroundColor: 'white',
     borderRadius: 5,
+    borderWidth: 1,
+    borderColor: 'white',
     width: 150,
     textAlign: 'center',
     marginRight: 10,
     height: '80%',
+  },
+  disabledButton: {
+    color: 'gray',
   },
 });
 

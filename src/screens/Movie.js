@@ -28,7 +28,7 @@ const Movie = ({route}) => {
     getMoviesDetails();
   }, [route.params.movie_details.id]);
   return loading ? (
-    <Loading />
+    <Loading loadingText={'"' + route.params.movie_details.title + '"'} />
   ) : (
     <SafeAreaView style={{flex: 1}}>
       <ImageBackground
@@ -46,15 +46,17 @@ const Movie = ({route}) => {
                   : require('../assets/image_not_found.jpg')
               }
             />
-            {/*{getImage({route})}*/}
-            {getTitle({route})}
-            {getOverwiew({route})}
-            {getGenres(details)}
-            {getRateAndReviews({route})}
-            {getReleaseDate({route})}
-            {getPopularity({route})}
-            {getProductionCompanies(details)}
-            {getHomePageLink(details)}
+            <View style={{marginHorizontal: 10}}>
+              {/*{getImage({route})}*/}
+              {getTitle({route})}
+              {getOverwiew({route})}
+              {getGenres(details)}
+              {getRateAndReviews({route})}
+              {getReleaseDate({route})}
+              {getPopularity({route})}
+              {getProductionCompanies(details)}
+              {getHomePageLink(details)}
+            </View>
           </View>
         </ScrollView>
       </ImageBackground>

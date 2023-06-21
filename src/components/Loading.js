@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, ActivityIndicator} from 'react-native';
-const Loading = () => {
+import {View, Text, ActivityIndicator} from 'react-native';
+const Loading = props => {
   return (
     <View
       style={{
@@ -9,6 +9,7 @@ const Loading = () => {
         justifyContent: 'center',
       }}>
       <ActivityIndicator size="large" />
+      <Text style={{color: 'black'}}>Loading {props.loadingText}</Text>
     </View>
   );
 };
