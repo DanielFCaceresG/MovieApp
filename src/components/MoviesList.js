@@ -73,7 +73,7 @@ const MoviesList = ({navigation}) => {
         <TextInput
           style={styles.textInput}
           placeholder="All Movies"
-          returnKeyType={'done'}
+          placeholderTextColor="gray"
           value={wordKeeper}
           onChangeText={text => {
             setWordKeeper(text);
@@ -152,6 +152,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textInput: {
+    color: 'white',
     borderRadius: 5,
     borderWidth: 1,
     borderColor: 'white',
